@@ -1,30 +1,43 @@
 package ru.qa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.qa.core.BaseTest;
 
-public class MainPage {
+import java.time.Duration;
 
-    private WebDriver driver;
+public class MainPage extends BaseTest {
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver,this);
     }
 
-    @FindBy(css = "[data-testid='phoneInput']")
-    private WebElement phoneInput;
-
-    @FindBy(css = "input[inputmode='numeric']")
-    private WebElement codeInput;
-
-    public void enterPhone(String phone) {
-        phoneInput.sendKeys(phone);
+    //открываем страницу
+    public void open(String url) {
+        driver.get(url);
     }
 
-    public void enterCode(String code) {
-        codeInput.sendKeys(code);
+    //Ищем элемент по CSS
+    public WebElement getElementByCss(String cssSelector) {
+        return driver.findElement(By.cssSelector(cssSelector));
     }
+
+    //Ищем элемент по XPath
+    public WebElement getElementByXPath(String xPath) {
+        return driver.findElement(By.xpath(xPath));
+    }
+
+    //кликаем на элемент после ожидания
+    public void ClickOnElement(WebElement locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
 }
