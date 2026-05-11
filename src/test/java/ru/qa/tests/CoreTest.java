@@ -8,7 +8,7 @@ import ru.qa.core.BaseTest;
 
 public class CoreTest extends BaseTest {
 
-    protected String BaseUrl = "https://wildberries.ru/";
+    protected String BaseUrl = "https://сайт/";
 
     @Test
     void testOpenLoginPopupOnMainPageForUnregUser() {
