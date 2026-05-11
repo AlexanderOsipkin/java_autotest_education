@@ -30,14 +30,23 @@ public class BaseTest {
             //System.setProperty("webdriver.chrome.driver", "/Users/user/Downloads/chromedriver-win64/chromedriver.exe");
             // Настройка опций для подключения к существующему браузеру
             ChromeOptions options = new ChromeOptions();
+
             // открывает браузер на весь экран
             options.addArguments("--start-maximized");
+
+            // отключает уведомления в хром
             options.addArguments("--disable-notifications");
+
             //options.setExperimentalOption("debuggerAddress", "localhost:9222");//http://localhost:9222/json/version
             // Инициализация драйвера
             driver = new ChromeDriver(options);
+
+            //Ожидаем элементы сайта 10 секунд
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
             //Добавим классы описанием страниц для инициализации
             mainPage = new MainPage(driver);
+
         } catch (Exception e) {
             System.err.println("Ошибка при создании контекста или инициализации драйвера: " + e.getMessage());
             throw new RuntimeException("Не удалось инициализировать драйвер", e);
@@ -51,14 +60,17 @@ public class BaseTest {
         }
     }
 
+    //открываем страницу
     public void open(String url) {
         driver.get(url);
     }
 
+    //Ищем элемент по CSS
     public WebElement getElementByCss(String cssSelector) {
         return driver.findElement(By.cssSelector(cssSelector));
     }
 
+    //Ищем элемент по XPath
     public WebElement getElementByXPath(String xPath) {
         return driver.findElement(By.xpath(xPath));
     }
