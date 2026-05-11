@@ -22,4 +22,5 @@ public class CorePage extends MainPage {
     @Getter
     @FindBy(css = "[data-test-id=\"auth-title-h2\"]")
     public WebElement AuthTitle;
+
 }
