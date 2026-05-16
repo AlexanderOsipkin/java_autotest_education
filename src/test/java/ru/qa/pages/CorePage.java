@@ -70,6 +70,7 @@ public class CorePage extends MainPage {
 
     // тут мы ассертим только текст, поэтому span,
     // если нужна кнопка, то можно юзануть дополнительно input[data-testid='delivery-way-map-self']
+    // ну или уйти в xpath
     @Getter
     @FindBy(css = "span[data-testid=\"delivery-way-map-self\"]")
     public WebElement PVZButton;
