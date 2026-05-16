@@ -12,7 +12,7 @@ public class CorePage extends MainPage {
     }
 
     @Getter
-    @FindBy(css = "[data-wba-header-name=\"Login\"]" )
+    @FindBy(css = "[data-wba-header-name=\"Login\"]")
     public WebElement LoginPopup;
 
     @Getter
@@ -20,7 +20,15 @@ public class CorePage extends MainPage {
     public WebElement AuthForm;
 
     @Getter
-    @FindBy(css = "[data-test-id=\"auth-title-h2\"]")
+    @FindBy(css = "[data-test-id=\"auth-title-login-or-create-a-profile\"]")
     public WebElement AuthTitle;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"linkTermsOfUse\"]")
+    public WebElement linkTermsOfUse;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"linkReturnPolice\"]")
+    public WebElement linkReturnPolice;
 
 }

@@ -17,7 +17,7 @@ public class MainPage extends BaseTest {
     public MainPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     //открываем страницу
@@ -38,6 +38,17 @@ public class MainPage extends BaseTest {
     //кликаем на элемент после ожидания
     public void ClickOnElement(WebElement locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    // хелпер для проверки того, что верная ссылка открылась в соседней вкладке
+    public void switchToNewTab() {
+        String currentWindow = driver.getWindowHandle();
+        for (String window : driver.getWindowHandles()) {
+            if (!window.equals(currentWindow)) {
+                driver.switchTo().window(window);
+                break;
+            }
+        }
     }
 
 }
