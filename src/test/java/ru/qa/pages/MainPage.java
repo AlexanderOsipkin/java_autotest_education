@@ -51,4 +51,9 @@ public class MainPage extends BaseTest {
         }
     }
 
+    // хелпер что бы дождаться элемента
+    public WebElement waitForElementVisible(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
 }

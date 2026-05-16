@@ -13,7 +13,7 @@ public class CorePage extends MainPage {
 
     @Getter
     @FindBy(css = "[data-wba-header-name=\"Login\"]")
-    public WebElement LoginPopup;
+    public WebElement LoginButton;
 
     @Getter
     @FindBy(css = "[data-testid=\"authForm\"]")
