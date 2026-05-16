@@ -11,6 +11,10 @@ public class CorePage extends MainPage {
         super(driver);
     }
 
+
+    // не лучший мой вариант использования локаторов,
+    // так как на странице /lk их будет по 2,
+    // в будущем попробую порефакторить или заменить на xpath
     @Getter
     @FindBy(css = "[data-wba-header-name=\"Login\"]")
     public WebElement LoginButton;
@@ -18,6 +22,18 @@ public class CorePage extends MainPage {
     @Getter
     @FindBy(css = "[data-testid=\"authForm\"]")
     public WebElement AuthForm;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"phoneInput\"]")
+    public WebElement PhoneInput;
+
+    @Getter
+    @FindBy(css = "[data-class=\"btn\"]")
+    public WebElement PhoneRegion;
+
+    @Getter
+    @FindBy(css = "[data-test-id=\"auth-phone-input-get-code-btn\"]")
+    public WebElement GetCodeButton;
 
     @Getter
     @FindBy(css = "[data-test-id=\"auth-title-login-or-create-a-profile\"]")
