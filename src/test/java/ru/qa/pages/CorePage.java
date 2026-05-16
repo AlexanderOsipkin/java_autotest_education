@@ -17,27 +17,27 @@ public class CorePage extends MainPage {
     // в будущем попробую порефакторить или заменить на xpath
     @Getter
     @FindBy(css = "[data-wba-header-name=\"Login\"]")
-    public WebElement LoginButton;
+    public WebElement loginButton;
 
     @Getter
     @FindBy(css = "[data-testid=\"authForm\"]")
-    public WebElement AuthForm;
+    public WebElement authForm;
 
     @Getter
     @FindBy(css = "[data-testid=\"phoneInput\"]")
-    public WebElement PhoneInput;
+    public WebElement phoneInput;
 
     @Getter
     @FindBy(css = "[data-class=\"btn\"]")
-    public WebElement PhoneRegion;
+    public WebElement phoneRegion;
 
     @Getter
     @FindBy(css = "[data-test-id=\"auth-phone-input-get-code-btn\"]")
-    public WebElement GetCodeButton;
+    public WebElement getCodeButton;
 
     @Getter
     @FindBy(css = "[data-test-id=\"auth-title-login-or-create-a-profile\"]")
-    public WebElement AuthTitle;
+    public WebElement authTitle;
 
     @Getter
     @FindBy(css = "[data-testid=\"linkTermsOfUse\"]")
@@ -46,5 +46,45 @@ public class CorePage extends MainPage {
     @Getter
     @FindBy(css = "[data-testid=\"linkReturnPolice\"]")
     public WebElement linkReturnPolice;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"geo-delivery-points-popup-open\"]")
+    public WebElement geoPopupButton;
+
+    @Getter
+    @FindBy(xpath = "//div[@role='dialog' and contains(@class,'popup-geo')]")
+    public WebElement mapPopup;
+
+    @Getter
+    @FindBy(xpath = "//div[@role='dialog']//h2[contains(text(),'Выберите способ доставки')]")
+    public WebElement deliveryChangeHeader;
+
+    @Getter
+    @FindBy(xpath = "//div[@role='dialog']//button[text()='Закрыть']")
+    public WebElement closeMapButton;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"map-search-input\"]")
+    public WebElement mapSearchInput;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"delivery-way-map-self\"]")
+    public WebElement PVZButton;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"delivery-way-map-courier\"]")
+    public WebElement courierButton;
+
+    @Getter
+    @FindBy(css = ".map-controlls .map-controlls__zoom-in")
+    public WebElement zoomInButton;
+
+    @Getter
+    @FindBy(css = ".map-controlls .map-controlls__zoom-out")
+    public WebElement zoomOutButton;
+
+    @Getter
+    @FindBy(css = ".map-controlls .map-controlls__user-location")
+    public WebElement userLocationButton;
 
 }

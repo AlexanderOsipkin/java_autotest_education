@@ -17,7 +17,7 @@ public class BaseTest {
     protected static WebDriverWait wait;
 
     public static MainPage mainPage;
-    public static CorePage CorePage;
+    public static CorePage corePage;
 
     @BeforeAll
     public static void initContext() {
@@ -41,7 +41,7 @@ public class BaseTest {
 
             //Добавим классы описанием страниц для инициализации
             mainPage = new MainPage(driver);
-            CorePage = new CorePage(driver);
+            corePage = new CorePage(driver);
 
         } catch (Exception e) {
             System.err.println("Ошибка при создании контекста или инициализации драйвера: " + e.getMessage());
