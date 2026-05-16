@@ -67,8 +67,11 @@ public class CorePage extends MainPage {
     @FindBy(css = "[data-testid=\"map-search-input\"]")
     public WebElement mapSearchInput;
 
+
+    // тут мы ассертим только текст, поэтому span,
+    // если нужна кнопка, то можно юзануть дополнительно input[data-testid='delivery-way-map-self']
     @Getter
-    @FindBy(css = "[data-testid=\"delivery-way-map-self\"]")
+    @FindBy(css = "span[data-testid=\"delivery-way-map-self\"]")
     public WebElement PVZButton;
 
     @Getter
