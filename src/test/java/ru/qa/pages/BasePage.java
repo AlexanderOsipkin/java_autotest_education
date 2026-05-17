@@ -1,20 +1,18 @@
 package ru.qa.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.qa.core.BaseTest;
 
 import java.time.Duration;
 
-public class MainPage extends BaseTest {
+public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public MainPage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
@@ -25,19 +23,9 @@ public class MainPage extends BaseTest {
         driver.get(url);
     }
 
-    //Ищем элемент по CSS
-    public WebElement getElementByCss(String cssSelector) {
-        return driver.findElement(By.cssSelector(cssSelector));
-    }
-
-    //Ищем элемент по XPath
-    public WebElement getElementByXPath(String xPath) {
-        return driver.findElement(By.xpath(xPath));
-    }
-
     //кликаем на элемент после ожидания
-    public void ClickOnElement(WebElement locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    public void click(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     // хелпер для проверки того, что верная ссылка открылась в соседней вкладке
@@ -52,8 +40,19 @@ public class MainPage extends BaseTest {
     }
 
     // хелпер что бы дождаться элемента
-    public WebElement waitForElementVisible(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element));
+    public void waitUntilVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    //Хелпер для проверки что элемент кликабельный но без клика на него
+    public boolean isElementClickable(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return element.isDisplayed();
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class CorePage extends MainPage {
+public class CorePage extends BasePage {
     public CorePage(WebDriver driver) {
         super(driver);
     }
@@ -16,7 +16,7 @@ public class CorePage extends MainPage {
     // так как на странице /lk их будет по 2,
     // в будущем попробую порефакторить или заменить на xpath
     @Getter
-    @FindBy(css = "[data-wba-header-name=\"Login\"]")
+    @FindBy(css = "[data-testid=\"login\"]")
     public WebElement loginButton;
 
     @Getter
@@ -67,7 +67,6 @@ public class CorePage extends MainPage {
     @FindBy(css = "[data-testid=\"map-search-input\"]")
     public WebElement mapSearchInput;
 
-
     // тут мы ассертим только текст, поэтому span,
     // если нужна кнопка, то можно юзануть дополнительно input[data-testid='delivery-way-map-self']
     // ну или уйти в xpath
@@ -90,5 +89,45 @@ public class CorePage extends MainPage {
     @Getter
     @FindBy(css = ".map-controlls .map-controlls__user-location")
     public WebElement userLocationButton;
+
+    @Getter
+    @FindBy(css = "[id=\"header\"]")
+    public WebElement siteHeader;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"main-logo-wb\"]")
+    public WebElement mainLogo;
+
+    @Getter
+    @FindBy(css = ("[data-wba-header-name=\"Catalog\"]"))
+    public WebElement siteBurgerMenu;
+
+    @Getter
+    @FindBy(css = "[id=\"searchBlock\"]")
+    public WebElement siteSearchInput;
+
+    @Getter
+    @FindBy(css = "[data-wba-header-name=\"Pick_up_points\"]")
+    public WebElement siteAddressButton;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"basket-header\"]")
+    public WebElement siteBasketButton;
+
+    @Getter
+    @FindBy(css = "[id=\"diamondsMenu\"]")
+    public WebElement diamondsMenu;
+
+    @Getter
+    @FindBy(css = "id=\"nonAuthBalanceBlock\"")
+    public WebElement cashbackButton;
+
+    @Getter
+    @FindBy(css = "[data-testid=\"selected-currency\"]")
+    public WebElement selectedCurrencyButton;
+
+
+
+
 
 }

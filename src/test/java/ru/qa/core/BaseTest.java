@@ -1,26 +1,29 @@
 package ru.qa.core;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.pages.CorePage;
-import ru.qa.pages.MainPage;
+import ru.qa.pages.BasePage;
 
 import java.time.Duration;
 
 public class BaseTest {
 
-    protected static WebDriver driver;
-    protected static WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
-    public static MainPage mainPage;
-    public static CorePage corePage;
+    protected BasePage basePage;
+    protected CorePage corePage;
 
-    @BeforeAll
-    public static void initContext() {
+
+    // Переделал на Each потому что - каждый тест получает чистый браузер
+    // тесты независимы, меньше нестабильног оповедения при параллельных запусках
+    @BeforeEach
+    public void initContext() {
         try {
             //System.setProperty("webdriver.chrome.driver", "/Users/user/Downloads/chromedriver-win64/chromedriver.exe");
             // Настройка опций для подключения к существующему браузеру
@@ -40,7 +43,7 @@ public class BaseTest {
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
             //Добавим классы описанием страниц для инициализации
-            mainPage = new MainPage(driver);
+            basePage = new BasePage(driver);
             corePage = new CorePage(driver);
 
         } catch (Exception e) {
@@ -49,8 +52,8 @@ public class BaseTest {
         }
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
