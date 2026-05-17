@@ -103,8 +103,12 @@ public class CorePage extends BasePage {
     public WebElement siteBurgerMenu;
 
     @Getter
-    @FindBy(css = "[id=\"searchBlock\"]")
+    @FindBy(css = "[id=\"searchInput\"]")
     public WebElement siteSearchInput;
+
+    @Getter
+    @FindBy(css = "[id=\"searchByImageFormAbNew\"]")
+    public WebElement searchEmblem;
 
     @Getter
     @FindBy(css = "[data-wba-header-name=\"Pick_up_points\"]")
@@ -119,7 +123,7 @@ public class CorePage extends BasePage {
     public WebElement diamondsMenu;
 
     @Getter
-    @FindBy(css = "id=\"nonAuthBalanceBlock\"")
+    @FindBy(css = "[id=\"nonAuthBalanceBlock\"]")
     public WebElement cashbackButton;
 
     @Getter

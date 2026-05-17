@@ -91,7 +91,7 @@ public class CoreTest extends BaseTest {
     void testSiteHaveHeader() {
         corePage.open(BaseUrl + "lk");
 
-        Assertions.assertTrue(corePage.siteHeader.isDisplayed(), "Шапка сайцта не отображается");
+        Assertions.assertTrue(corePage.siteHeader.isDisplayed(), "Шапка сайта не отображается");
         Assertions.assertTrue(corePage.mainLogo.isDisplayed(), "Лого сайта в шапке не оторбражается");
         Assertions.assertTrue(corePage.mainLogo.isEnabled(), "С лого сайта запрещено взаимодействовать");
         Assertions.assertTrue(corePage.isElementClickable(corePage.mainLogo), "Лого в шапке не кликабельно");
@@ -103,6 +103,9 @@ public class CoreTest extends BaseTest {
         String placeholder = corePage.siteSearchInput.getAttribute("placeholder");
         Assertions.assertEquals("Найти на Wildberries", placeholder, "Некорректный placeholder у поля поиска");
         Assertions.assertTrue(corePage.isElementClickable(corePage.siteSearchInput), "Поле поиска в шапке не кликабельно");
+        Assertions.assertTrue(corePage.searchEmblem.isDisplayed(), "Поиск по картинке не отображается");
+        Assertions.assertTrue(corePage.searchEmblem.isEnabled(), "С поиском по картинке запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.searchEmblem), "Поиск по картинке не кликабельный");
         Assertions.assertTrue(corePage.siteAddressButton.isDisplayed(), "Кнопка адресов не отображается");
         Assertions.assertTrue(corePage.siteAddressButton.isEnabled(), "С кнопкой адресов запрещено взаимодейтсвовать");
         Assertions.assertEquals("Адреса", corePage.siteAddressButton.getText(), "Некорректный текст в кнопке адресов");
@@ -119,7 +122,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.diamondsMenu.isEnabled(), "С даймондами в шапке запрещено взаимодействовать");
         Assertions.assertTrue(corePage.cashbackButton.isDisplayed(), "Кнопка кешбека не отображается");
         Assertions.assertTrue(corePage.cashbackButton.isEnabled(), "С кнопкой кешбека запрещено взаимодействовать");
-        Assertions.assertEquals("Кешбэк", corePage.cashbackButton.getText(), "Некорректный текст в кнопке кешбека");
+        Assertions.assertEquals("КЕШБЭК", corePage.cashbackButton.getText(), "Некорректный текст в кнопке кешбека");
         Assertions.assertTrue(corePage.isElementClickable(corePage.cashbackButton), "Кнопка кешбека в шапке не кликабельна");
         Assertions.assertTrue(corePage.selectedCurrencyButton.isDisplayed(), "Кнопка валюты не отображается");
         Assertions.assertTrue(corePage.selectedCurrencyButton.isEnabled(), "С кнопкой валюты запрещено взаимодействовать");
