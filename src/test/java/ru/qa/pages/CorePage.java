@@ -131,51 +131,51 @@ public class CorePage extends BasePage {
     public WebElement selectedCurrencyButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='wibes']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='wibes'] a")
     public WebElement wibesButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='hotels']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='hotels'] a")
     public WebElement hotelsButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='avia']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='avia'] a")
     public WebElement aviaButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='funSun']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='funSun'] a")
     public WebElement funSunButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='resale']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='resale'] a")
     public WebElement resaleButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='wbClub']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='wbClub'] a")
     public WebElement wbClubButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='business']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='business'] a")
     public WebElement businessButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='realty']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='realty'] a")
     public WebElement realtyButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='brands']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='brands'] a")
     public WebElement brandsButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='more']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='more'] a")
     public WebElement moreButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='work']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='work'] a")
     public WebElement workButton;
 
     @Getter
-    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds [data-menu-id='eapteka']")
+    @FindBy(css = "#diamondsMenu > ul.simple-menu__diamonds li[data-menu-id='eapteka'] a")
     public WebElement eaptekaButton;
 
 
