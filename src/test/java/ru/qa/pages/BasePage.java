@@ -31,6 +31,7 @@ public class BasePage {
     // хелпер для проверки того, что верная ссылка открылась в соседней вкладке
     public void switchToNewTab() {
         String currentWindow = driver.getWindowHandle();
+        wait.until(driver -> driver.getWindowHandles().size() > 1);
         for (String window : driver.getWindowHandles()) {
             if (!window.equals(currentWindow)) {
                 driver.switchTo().window(window);

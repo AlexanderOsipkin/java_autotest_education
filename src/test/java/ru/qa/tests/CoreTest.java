@@ -2,6 +2,7 @@ package ru.qa.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.qa.core.BaseTest;
 
 
@@ -10,11 +11,11 @@ public class CoreTest extends BaseTest {
     protected String BaseUrl = "https://сайт/";
 
 
-    // Все тесты делались валидными только для РУ домена,
+    // Все UI Smoke тесты делались валидными только для РУ домена,
     // так как для обучения я думаю этого достаточно,
     // в последующем, при необходимости можно переделать под все домены
     @Test
-    void testOpenLoginPopupOnMainPageForUnregUser() {
+    void testOpenLoginPopupOnMainPageForUnregisterUser() {
         corePage.open(BaseUrl + "lk/basket");
         corePage.click(corePage.loginButton);
         corePage.waitUntilVisible(corePage.authForm);
@@ -41,7 +42,7 @@ public class CoreTest extends BaseTest {
         corePage.click(corePage.linkTermsOfUse);
         corePage.switchToNewTab();
 
-        Assertions.assertEquals("https://legal.wildberries.ru/consumers-offer/country/ru/lang/ru/", driver.getCurrentUrl());
+        Assertions.assertEquals("https://legal.wildberries.ru/consumers-offer/country/ru/lang/ru/", driver.getCurrentUrl(), "Открылась некорректная страница Оферты");
     }
 
     @Test
@@ -52,7 +53,7 @@ public class CoreTest extends BaseTest {
         corePage.click(corePage.linkReturnPolice);
         corePage.switchToNewTab();
 
-        Assertions.assertEquals("https://legal.wildberries.ru/privacypolicy/country/ru/lang/ru/", driver.getCurrentUrl());
+        Assertions.assertEquals("https://legal.wildberries.ru/privacypolicy/country/ru/lang/ru/", driver.getCurrentUrl(),"Открылась некорректная страница Правил");
     }
 
     @Test
@@ -129,9 +130,126 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.isElementClickable(corePage.selectedCurrencyButton), "Кнопка валюты в шапке не кликабельна");
     }
 
+    //Позже подумаю над тем, что бы вынести все повторяющиеся элементы в отдельный хелпер,
+    // что бы читать стало удобней, пока оставлю так
     @Test
-    void testDiamondsInMenu() {
+    void testDesktopDiamondsInMenuForUnregisterUser() {
+        corePage.open(BaseUrl + "lk");
 
+        // Проверка кнопки Wibes до клика
+        Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
+        Assertions.assertTrue(corePage.wibesButton.isEnabled(), "С кнопкой Wibes запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.wibesButton), "Кнопка Wibes не кликабельна");
+
+        // Сохраняем текущию вкладку
+        String mainWindow = driver.getWindowHandle();
+
+        // Кликаем на Wibes и переходим на открытую вкладку
+        corePage.click(corePage.wibesButton);
+        corePage.switchToNewTab();
+        Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(),"Открылась некорректная страница Wibes");
+
+        // Закрываем новую вкладку и возвращаемся обратно
+        driver.close();
+        driver.switchTo().window(mainWindow);
+
+        // Проверяем что вернулись успешно
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // Все тоже самое, но для остальных кнопок в даймондах
+        // Отели
+        Assertions.assertTrue(corePage.hotelsButton.isDisplayed(), "Кнопка Отели не отображается");
+        Assertions.assertTrue(corePage.hotelsButton.isEnabled(), "С кнопкой Отели запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.hotelsButton), "Кнопка Отели не кликабельна");
+
+        corePage.click(corePage.hotelsButton);
+        corePage.switchToNewTab();
+        Assertions.assertEquals("https://www.wildberries.ru/travel/hotel?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница Отелей");
+
+        driver.close();
+        driver.switchTo().window(mainWindow);
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // Авиабилеты
+        Assertions.assertTrue(corePage.aviaButton.isDisplayed(), "Кнопка Авиабилеты не отображается");
+        Assertions.assertTrue(corePage.aviaButton.isEnabled(), "С кнопкой Авиабилеты запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.aviaButton), "Кнопка Авиабилеты не кликабельна");
+
+        corePage.click(corePage.aviaButton);
+        corePage.switchToNewTab();
+        Assertions.assertEquals("https://www.wildberries.ru/travel/avia?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки Авиабилетов");
+
+        driver.close();
+        driver.switchTo().window(mainWindow);
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // Фан и Сан
+        Assertions.assertTrue(corePage.funSunButton.isDisplayed(), "Кнопка FunSun не отображается");
+        Assertions.assertTrue(corePage.funSunButton.isEnabled(), "С кнопкой FunSun запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.funSunButton), "Кнопка FunSun не кликабельна");
+
+        corePage.click(corePage.funSunButton);
+        corePage.switchToNewTab();
+        Assertions.assertEquals("https://www.wildberries.ru/travel/tours?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки FunSun");
+
+        driver.close();
+        driver.switchTo().window(mainWindow);
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        //Ресейл
+        Assertions.assertTrue(corePage.resaleButton.isDisplayed(), "Кнопка Ресейла не отображается");
+        Assertions.assertTrue(corePage.resaleButton.isEnabled(), "С кнопкой Ресейла запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.resaleButton), "Кнопка Ресейла не кликабельна");
+
+        corePage.click(corePage.resaleButton);
+        wait.until(ExpectedConditions.urlContains("/catalog/resale"));
+        Assertions.assertEquals(BaseUrl + "catalog/resale", driver.getCurrentUrl(), "Открылась некорректная страница Ресейл");
+
+        driver.navigate().back();
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // ВБ Клуб
+        Assertions.assertTrue(corePage.wbClubButton.isDisplayed(), "Кнопка WbClub не отображается");
+        Assertions.assertTrue(corePage.wbClubButton.isEnabled(), "С кнопкой WbClub запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.wbClubButton), "Кнопка WbClub не кликабельна");
+
+        corePage.click(corePage.wbClubButton);
+        wait.until(ExpectedConditions.urlContains("/subscription"));
+        Assertions.assertEquals(BaseUrl + "subscription", driver.getCurrentUrl(), "Открылась некорректная страница WbClub");
+
+        driver.navigate().back();
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // для бизнеса (большая выпадашка, сделаю позже)
+        // Еаптека
+        Assertions.assertTrue(corePage.eaptekaButton.isDisplayed(), "Кнопка Еаптека не отображается");
+        Assertions.assertTrue(corePage.eaptekaButton.isEnabled(), "С кнопкой Еаптека запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.eaptekaButton), "Кнопка Еаптека не кликабельна");
+
+        corePage.click(corePage.eaptekaButton);
+        wait.until(ExpectedConditions.urlContains("/eapteka"));
+        Assertions.assertEquals(BaseUrl + "eapteka", driver.getCurrentUrl(), "Открылась некорректная страница Еаптека");
+
+        driver.navigate().back();
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // Работа в WB
+        Assertions.assertTrue(corePage.workButton.isDisplayed(), "Кнопка Работа в WB не отображается");
+        Assertions.assertTrue(corePage.workButton.isEnabled(), "С кнопкой Работа в WB запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.workButton), "Кнопка Работа в WB не кликабельна");
+
+        corePage.click(corePage.workButton);
+        corePage.switchToNewTab();
+        Assertions.assertEquals("https://career.rwb.ru/", driver.getCurrentUrl(),"Открылась некорректная страница карьерного портала");
+
+        driver.close();
+        driver.switchTo().window(mainWindow);
+        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+
+        // Кнопка "еще" - большая выпадашка, сделаю позже
     }
 
 }
