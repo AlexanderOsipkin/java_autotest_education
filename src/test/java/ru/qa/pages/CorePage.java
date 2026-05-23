@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 
 public class CorePage extends BasePage {
     public CorePage(WebDriver driver) {
@@ -131,8 +133,8 @@ public class CorePage extends BasePage {
     public WebElement selectedCurrencyButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='wibes'] a")
-    public WebElement wibesButton;
+    @FindBy(css = "#diamondsMenu > ul.measurement-container-diamonds li[data-menu-id='wibes'] a")
+    public List<WebElement> wibesButton;
 
     @Getter
     @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='hotels'] a")
