@@ -135,6 +135,7 @@ public class CoreTest extends BaseTest {
     @Test
     void testDesktopDiamondsInMenuForUnregisterUser() {
         corePage.open(BaseUrl + "lk");
+        corePage.waitUntilVisible(corePage.wibesButton);
 
         // Проверка кнопки Wibes до клика
         Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
