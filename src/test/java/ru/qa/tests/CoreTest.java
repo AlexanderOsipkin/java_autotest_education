@@ -2,11 +2,8 @@ package ru.qa.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.qa.core.BaseTest;
-import java.util.List;
 
 
 public class CoreTest extends BaseTest {
@@ -137,53 +134,27 @@ public class CoreTest extends BaseTest {
     // что бы читать стало удобней, пока оставлю так
     @Test
     void testDesktopDiamondsInMenuForUnregisterUser() {
-        corePage.open(BaseUrl + "lk");
-
-        // Получаем отображаемую кнопку Wibes
-        WebElement wibesButton = corePage.getVisibleElement(corePage.wibesButton);
+        corePage.open(BaseUrl + "lk/basket");
 
         // Проверка кнопки Wibes до клика
-        Assertions.assertTrue(wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
-        Assertions.assertTrue(wibesButton.isEnabled(), "С кнопкой Wibes запрещено взаимодействовать");
-        Assertions.assertTrue(corePage.isElementClickable(wibesButton), "Кнопка Wibes не кликабельна");
+        Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
+        Assertions.assertTrue(corePage.wibesButton.isEnabled(), "С кнопкой Wibes запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.wibesButton), "Кнопка Wibes не кликабельна");
 
-        // Сохраняем текущую вкладку
+        // Сохраняем текущию вкладку
         String mainWindow = driver.getWindowHandle();
 
         // Кликаем на Wibes и переходим на открытую вкладку
-        corePage.click(wibesButton);
+        corePage.click(corePage.wibesButton);
         corePage.switchToNewTab();
-
-        Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(), "Открылась некорректная страница Wibes");
+       Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(),"Открылась некорректная страница Wibes");
 
         // Закрываем новую вкладку и возвращаемся обратно
         driver.close();
         driver.switchTo().window(mainWindow);
 
         // Проверяем что вернулись успешно
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
-
-
-
-        // Проверка кнопки Wibes до клика
-        //Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
-        //Assertions.assertTrue(corePage.wibesButton.isEnabled(), "С кнопкой Wibes запрещено взаимодействовать");
-        //Assertions.assertTrue(corePage.isElementClickable(corePage.wibesButton), "Кнопка Wibes не кликабельна");
-
-        // Сохраняем текущию вкладку
-        //String mainWindow = driver.getWindowHandle();
-
-        // Кликаем на Wibes и переходим на открытую вкладку
-        //corePage.click(corePage.wibesButton);
-        //corePage.switchToNewTab();
-       //Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(),"Открылась некорректная страница Wibes");
-
-        // Закрываем новую вкладку и возвращаемся обратно
-        //driver.close();
-        //driver.switchTo().window(mainWindow);
-
-        // Проверяем что вернулись успешно
-        //Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Все тоже самое, но для остальных кнопок в даймондах
         // Отели
