@@ -2,8 +2,11 @@ package ru.qa.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.qa.core.BaseTest;
+import java.util.List;
 
 
 public class CoreTest extends BaseTest {
@@ -136,6 +139,23 @@ public class CoreTest extends BaseTest {
     void testDesktopDiamondsInMenuForUnregisterUser() {
         corePage.open(BaseUrl + "lk");
         corePage.waitUntilVisible(corePage.wibesButton);
+
+        List<WebElement> elements = driver.findElements(
+                By.cssSelector("li[data-menu-id='wibes'] a")
+        );
+
+        System.out.println("Количество элементов: " + elements.size());
+
+        for (WebElement element : elements) {
+
+            System.out.println("TEXT: " + element.getText());
+
+            System.out.println("DISPLAYED: " + element.isDisplayed());
+
+            System.out.println("SIZE: " + element.getSize());
+
+            System.out.println("----------------");
+        }
 
         // Проверка кнопки Wibes до клика
         Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
