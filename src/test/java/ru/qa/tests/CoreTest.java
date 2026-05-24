@@ -155,7 +155,7 @@ public class CoreTest extends BaseTest {
         driver.switchTo().window(mainWindow);
 
         // Проверяем что вернулись успешно
-        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Все тоже самое, но для остальных кнопок в даймондах
         // Отели
@@ -169,7 +169,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Авиабилеты
         Assertions.assertTrue(corePage.aviaButton.isDisplayed(), "Кнопка Авиабилеты не отображается");
@@ -182,7 +182,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Фан и Сан
         Assertions.assertTrue(corePage.funSunButton.isDisplayed(), "Кнопка FunSun не отображается");
@@ -195,7 +195,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         //Ресейл
         Assertions.assertTrue(corePage.resaleButton.isDisplayed(), "Кнопка Ресейла не отображается");
@@ -207,7 +207,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "catalog/resale", driver.getCurrentUrl(), "Открылась некорректная страница Ресейл");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        wait.until(ExpectedConditions.urlContains(BaseUrl + "lk/basket"));
         Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // ВБ Клуб
@@ -220,7 +220,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "subscription", driver.getCurrentUrl(), "Открылась некорректная страница WbClub");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        wait.until(ExpectedConditions.urlContains(BaseUrl + "lk/basket"));
         Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Дропдаун для бизнеса
@@ -261,7 +261,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "eapteka", driver.getCurrentUrl(), "Открылась некорректная страница Еаптека");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        wait.until(ExpectedConditions.urlContains(BaseUrl + "lk/basket"));
         Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Работа в WB
