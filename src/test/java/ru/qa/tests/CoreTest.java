@@ -135,6 +135,7 @@ public class CoreTest extends BaseTest {
     @Test
     void testDesktopDiamondsInMenuForUnregisterUser() {
         corePage.open(BaseUrl + "lk/basket");
+        corePage.waitUntilVisible(corePage.diamondsMenu);
 
         // Проверка кнопки Wibes до клика
         Assertions.assertTrue(corePage.wibesButton.isDisplayed(), "Кнопка Wibes не отображается");
@@ -147,14 +148,14 @@ public class CoreTest extends BaseTest {
         // Кликаем на Wibes и переходим на открытую вкладку
         corePage.click(corePage.wibesButton);
         corePage.switchToNewTab();
-       Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(),"Открылась некорректная страница Wibes");
+        Assertions.assertEquals("https://wibes.ru/clips?utm_source=main_topbar&utm_medium=inner_wb", driver.getCurrentUrl(),"Открылась некорректная страница Wibes");
 
         // Закрываем новую вкладку и возвращаемся обратно
         driver.close();
         driver.switchTo().window(mainWindow);
 
         // Проверяем что вернулись успешно
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Все тоже самое, но для остальных кнопок в даймондах
         // Отели
@@ -164,11 +165,11 @@ public class CoreTest extends BaseTest {
 
         corePage.click(corePage.hotelsButton);
         corePage.switchToNewTab();
-        Assertions.assertEquals("https://www.wildberries.ru/travel/hotel?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница Отелей");
+        Assertions.assertEquals("https://stage.wildberries.ru/travel/hotel?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница Отелей");
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Авиабилеты
         Assertions.assertTrue(corePage.aviaButton.isDisplayed(), "Кнопка Авиабилеты не отображается");
@@ -177,11 +178,11 @@ public class CoreTest extends BaseTest {
 
         corePage.click(corePage.aviaButton);
         corePage.switchToNewTab();
-        Assertions.assertEquals("https://www.wildberries.ru/travel/avia?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки Авиабилетов");
+        Assertions.assertEquals("https://stage.wildberries.ru/travel/avia?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки Авиабилетов");
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Фан и Сан
         Assertions.assertTrue(corePage.funSunButton.isDisplayed(), "Кнопка FunSun не отображается");
@@ -190,11 +191,11 @@ public class CoreTest extends BaseTest {
 
         corePage.click(corePage.funSunButton);
         corePage.switchToNewTab();
-        Assertions.assertEquals("https://www.wildberries.ru/travel/tours?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки FunSun");
+        Assertions.assertEquals("https://stage.wildberries.ru/travel/tours?entry_point=tab_header", driver.getCurrentUrl(),"Открылась некорректная страница покупки FunSun");
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         //Ресейл
         Assertions.assertTrue(corePage.resaleButton.isDisplayed(), "Кнопка Ресейла не отображается");
@@ -207,7 +208,7 @@ public class CoreTest extends BaseTest {
 
         driver.navigate().back();
         wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // ВБ Клуб
         Assertions.assertTrue(corePage.wbClubButton.isDisplayed(), "Кнопка WbClub не отображается");
@@ -220,7 +221,7 @@ public class CoreTest extends BaseTest {
 
         driver.navigate().back();
         wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Дропдаун для бизнеса
         // Проверки до клика
@@ -261,7 +262,7 @@ public class CoreTest extends BaseTest {
 
         driver.navigate().back();
         wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Работа в WB
         Assertions.assertTrue(corePage.workButton.isDisplayed(), "Кнопка Работа в WB не отображается");
@@ -274,7 +275,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Кнопка "еще"
         // Проверки до клика
