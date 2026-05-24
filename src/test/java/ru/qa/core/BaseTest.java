@@ -30,7 +30,7 @@ public class BaseTest {
             ChromeOptions options = new ChromeOptions();
 
             // открывает браузер на весь экран
-            options.addArguments("--start-maximized");
+            options.addArguments("--window-size=1440,900");
 
             // отключает уведомления в хром
             options.addArguments("--disable-notifications");

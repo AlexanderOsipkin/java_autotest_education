@@ -265,6 +265,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(driver.getCurrentUrl().startsWith(BaseUrl + "lk/basket"), "Не удалось вернуться на основную страницу");
 
         // Работа в WB
+        corePage.waitUntilVisible(corePage.diamondsMenu);
         Assertions.assertTrue(corePage.workButton.isDisplayed(), "Кнопка Работа в WB не отображается");
         Assertions.assertTrue(corePage.workButton.isEnabled(), "С кнопкой Работа в WB запрещено взаимодействовать");
         Assertions.assertTrue(corePage.isElementClickable(corePage.workButton), "Кнопка Работа в WB не кликабельна");
@@ -284,7 +285,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.isElementClickable(corePage.moreDropdown), "Дропдаун еще не кликабельный");
         Assertions.assertTrue(corePage.moreDropdownMenu.getAttribute("class").contains("hide"), "Дропдаун еще уже открыт до клика");
 
-        corePage.click(corePage.moreDropdownMenu);
+        corePage.click(corePage.moreDropdown);
         corePage.waitUntilVisible(corePage.moreDropdownMenu);
 
         // Проверки после клика
