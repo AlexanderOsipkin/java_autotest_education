@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class BasePage {
     protected WebDriver driver;
@@ -56,13 +55,4 @@ public class BasePage {
             return false;
         }
     }
-
-    // Хелпер для даймондов wibes
-    public WebElement getVisibleElement(List<WebElement> elements) {
-        return elements.stream()
-                .filter(WebElement::isDisplayed)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Visible element не найден"));
-    }
-
 }

@@ -135,48 +135,76 @@ public class CorePage extends BasePage {
     public WebElement wibesButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='hotels'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"hotels\"] a")
     public WebElement hotelsButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='avia'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"avia\"] a")
     public WebElement aviaButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='funSun'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"funSun\"] a")
     public WebElement funSunButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='resale'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"resale\"] a")
     public WebElement resaleButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='wbClub'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"wbClub\"] a")
     public WebElement wbClubButton;
 
+    // Дропдаун для бизнеса
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='business'] a")
-    public WebElement businessButton;
+    @FindBy(css = ".simple-menu__diamonds-wrap li[data-menu-id='business'] > span")
+    public WebElement businessDropdown;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='realty'] a")
-    public WebElement realtyButton;
+    @FindBy(css = ".simple-menu__diamonds-wrap li[data-menu-id='business'] ul")
+    public WebElement businessDropdownMenu;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='brands'] a")
-    public WebElement brandsButton;
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"buyAsBusiness\"] a")
+    public WebElement buyAsBusinessButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='more'] a")
-    public WebElement moreButton;
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"seller\"] a")
+    public WebElement sellerButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='work'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"openPickUpPoint\"] a")
+    public WebElement openPickUpPointButton;
+
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"business_purchase\"] a")
+    public WebElement businessPurchaseButton;
+
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"china_wholesale\"] a")
+    public WebElement chinaWholesaleButton;
+
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"work\"]")
     public WebElement workButton;
 
     @Getter
-    @FindBy(css = "ul.measurement-container-diamonds li[data-menu-id='eapteka'] a")
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"eapteka\"]")
     public WebElement eaptekaButton;
 
+    // Дропдаун еще
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"more\"] > span")
+    public WebElement moreDropdown;
 
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap li[data-menu-id='more'] ul")
+    public WebElement moreDropdownMenu;
+
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"realty\"] a")
+    public WebElement realtyButton;
+
+    @Getter
+    @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"brands\"] a")
+    public WebElement brandsButton;
 }

@@ -168,7 +168,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Авиабилеты
         Assertions.assertTrue(corePage.aviaButton.isDisplayed(), "Кнопка Авиабилеты не отображается");
@@ -181,7 +181,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Фан и Сан
         Assertions.assertTrue(corePage.funSunButton.isDisplayed(), "Кнопка FunSun не отображается");
@@ -194,7 +194,7 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         //Ресейл
         Assertions.assertTrue(corePage.resaleButton.isDisplayed(), "Кнопка Ресейла не отображается");
@@ -206,8 +206,8 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "catalog/resale", driver.getCurrentUrl(), "Открылась некорректная страница Ресейл");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // ВБ Клуб
         Assertions.assertTrue(corePage.wbClubButton.isDisplayed(), "Кнопка WbClub не отображается");
@@ -219,10 +219,37 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "subscription", driver.getCurrentUrl(), "Открылась некорректная страница WbClub");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
-        // для бизнеса (большая выпадашка, сделаю позже)
+        // Дропдаун для бизнеса
+        // Проверки до клика
+        Assertions.assertTrue(corePage.businessDropdown.isDisplayed(), "Дропдаун для бизнеса не отображается");
+        Assertions.assertTrue(corePage.businessDropdown.isEnabled(), "С Дропдаун для бизнеса запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.businessDropdown), "Дропдаун для бизнеса не кликабельный");
+        Assertions.assertTrue(corePage.businessDropdownMenu.getAttribute("class").contains("hide"), "Дропдаун для бизнеса уже открыт до клика");
+
+        corePage.click(corePage.businessDropdown);
+        corePage.waitUntilVisible(corePage.businessDropdownMenu);
+
+        // Проверки после клика
+        Assertions.assertFalse(corePage.businessDropdownMenu.getAttribute("class").contains("hide"), "Дропдаун для бизнеса не раскрылся после клика");
+        Assertions.assertTrue(corePage.buyAsBusinessButton.isDisplayed(), "Кнопка WbClub не отображается");
+        Assertions.assertTrue(corePage.buyAsBusinessButton.isEnabled(), "С кнопкой WbClub запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.buyAsBusinessButton), "Кнопка WbClub не кликабельна");
+        Assertions.assertTrue(corePage.sellerButton.isDisplayed(), "Кнопка стать продавцом не отображается");
+        Assertions.assertTrue(corePage.sellerButton.isEnabled(), "С кнопкой стать продавцом запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.sellerButton), "Кнопка стать продавцом не кликабельна");
+        Assertions.assertTrue(corePage.openPickUpPointButton.isDisplayed(), "Кнопка открыть пункт выдачи не отображается");
+        Assertions.assertTrue(corePage.openPickUpPointButton.isEnabled(), "С кнопкой открыть пункт выдачи запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.openPickUpPointButton), "Кнопка открыть пункт выдачи не кликабельна");
+        Assertions.assertTrue(corePage.businessPurchaseButton.isDisplayed(), "Кнопка товары для бизнеса не отображается");
+        Assertions.assertTrue(corePage.businessPurchaseButton.isEnabled(), "С кнопкой товары для бизнеса запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.businessPurchaseButton), "Кнопка товары для бизнеса не кликабельна");
+        Assertions.assertTrue(corePage.chinaWholesaleButton.isDisplayed(), "Кнопка оптом из Китая не отображается");
+        Assertions.assertTrue(corePage.chinaWholesaleButton.isEnabled(), "С кнопкой оптом из Китая запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.chinaWholesaleButton), "Кнопка оптом из Китая не кликабельна");
+
         // Еаптека
         Assertions.assertTrue(corePage.eaptekaButton.isDisplayed(), "Кнопка Еаптека не отображается");
         Assertions.assertTrue(corePage.eaptekaButton.isEnabled(), "С кнопкой Еаптека запрещено взаимодействовать");
@@ -233,8 +260,8 @@ public class CoreTest extends BaseTest {
         Assertions.assertEquals(BaseUrl + "eapteka", driver.getCurrentUrl(), "Открылась некорректная страница Еаптека");
 
         driver.navigate().back();
-        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk"));
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        wait.until(ExpectedConditions.urlToBe(BaseUrl + "lk/basket"));
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
         // Работа в WB
         Assertions.assertTrue(corePage.workButton.isDisplayed(), "Кнопка Работа в WB не отображается");
@@ -247,11 +274,27 @@ public class CoreTest extends BaseTest {
 
         driver.close();
         driver.switchTo().window(mainWindow);
-        Assertions.assertEquals(BaseUrl + "lk", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
+        Assertions.assertEquals(BaseUrl + "lk/basket", driver.getCurrentUrl(), "Не удалось вернуться на основную страницу");
 
-        // Кнопка "еще" - большая выпадашка, сделаю позже
+        // Кнопка "еще"
+        // Проверки до клика
+        Assertions.assertTrue(corePage.moreDropdown.isDisplayed(), "Дропдаун еще не отображается");
+        Assertions.assertTrue(corePage.moreDropdown.isEnabled(), "С Дропдаун еще запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.moreDropdown), "Дропдаун еще не кликабельный");
+        Assertions.assertTrue(corePage.moreDropdownMenu.getAttribute("class").contains("hide"), "Дропдаун еще уже открыт до клика");
+
+        corePage.click(corePage.moreDropdownMenu);
+        corePage.waitUntilVisible(corePage.moreDropdownMenu);
+
+        // Проверки после клика
+        Assertions.assertFalse(corePage.moreDropdownMenu.getAttribute("class").contains("hide"), "Дропдаун еще не раскрылся после клика");
+        Assertions.assertTrue(corePage.realtyButton.isDisplayed(), "Кнопка новостройки не отображается");
+        Assertions.assertTrue(corePage.realtyButton.isEnabled(), "С кнопкой новостройки запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.realtyButton), "Кнопка новостройки не кликабельна");
+        Assertions.assertTrue(corePage.brandsButton.isDisplayed(), "Кнопка бренды не отображается");
+        Assertions.assertTrue(corePage.brandsButton.isEnabled(), "С кнопкой бренды запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.brandsButton), "Кнопка бренды не кликабельна");
     }
-
 }
 
 
