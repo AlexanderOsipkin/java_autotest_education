@@ -10,12 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FirstTest {
+
     @Test
     void openGoogleTest() throws InterruptedException {
         WebDriver driver = new ChromeDriver(); // запуск Chrome
         driver.get("https://www.google.com/"); // открытие страницы
         assertTrue(driver.getTitle().contains("Google")); // проверка нахождения на странице гугла
-        WebElement searchForm = driver.findElement(By.cssSelector(".gLFyf[title=\"Поиск\"]")); // ищем форму ввода
+        WebElement searchForm = driver.findElement(By.cssSelector(".gLFyf[title=\"Поиск\"]"));
+        // ищем форму ввода
         //  xpath вариант:
         //  WebElement searchForm = driver.findElement(By.xpath("//*[@title=\"Поиск\"]"));
         searchForm.sendKeys("Прогноз погоды"); // вводим значение

@@ -297,6 +297,12 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.brandsButton.isEnabled(), "С кнопкой бренды запрещено взаимодействовать");
         Assertions.assertTrue(corePage.isElementClickable(corePage.brandsButton), "Кнопка бренды не кликабельна");
     }
+
+    @Test
+    void testFooterOnBasketPage() {
+        corePage.open(BaseUrl + "lk/basket");
+
+    }
 }
 
 

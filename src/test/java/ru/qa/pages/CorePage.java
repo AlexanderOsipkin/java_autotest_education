@@ -207,4 +207,7 @@ public class CorePage extends BasePage {
     @Getter
     @FindBy(css = ".simple-menu__diamonds-wrap [data-menu-id=\"brands\"] a")
     public WebElement brandsButton;
+
+    @Getter
+    @FindBy(css = )
 }
