@@ -209,5 +209,51 @@ public class CorePage extends BasePage {
     public WebElement brandsButton;
 
     @Getter
-    @FindBy(css = )
+    @FindBy(css = "[id=\"footer\"]")
+    public WebElement mainFooter;
+
+    @Getter
+    @FindBy(css = ".media-placements-zones [data-analitics-code=\"FBS\"]")
+    public WebElement mediaPlacementsInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__list-wrap--buyers")
+    public WebElement buyersListInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__inner-wrap")
+    public WebElement sellersAndPartnersInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__list-wrap--ourprojects")
+    public WebElement ourProjectsInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__list-wrap--company")
+    public WebElement companyInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__list-wrap--download")
+    public WebElement downloadsInFooter;
+
+    @Getter
+    @FindBy(css = ".footer-social__icon--vk")
+    public WebElement vkIconInFooter;
+
+    @Getter
+    @FindBy(css = "footer-social__icon--ok")
+    public WebElement okIconInFooter;
+
+    @Getter
+    @FindBy(css = "footer-social__icon--telegram")
+    public WebElement tgIconInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__out")
+    public WebElement avroraIconInFooter;
+
+    @Getter
+    @FindBy(css = ".footer__link")
+    public WebElement recTechLinkInFooter;
+
 }

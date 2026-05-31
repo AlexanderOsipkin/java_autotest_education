@@ -298,9 +298,37 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.isElementClickable(corePage.brandsButton), "Кнопка бренды не кликабельна");
     }
 
+    // Тест на общие проверки наличия футора на странице
+    // для проверки каждой ссылки в футоре необходимо писать отдельный тест
+    // на каждую ссылку, иначе будет очень нагружено и нечитабельно
     @Test
     void testFooterOnBasketPage() {
         corePage.open(BaseUrl + "lk/basket");
+
+        Assertions.assertTrue(corePage.mainFooter.isDisplayed(), "Футер не отображается");
+        Assertions.assertTrue(corePage.mediaPlacementsInFooter.isDisplayed(), "Блок с рекламой в футере не отображается");
+        Assertions.assertTrue(corePage.mediaPlacementsInFooter.isEnabled(), "С блоком с рекламой в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.mediaPlacementsInFooter), "Блок с рекламой в футоре не кликабельный");
+        Assertions.assertTrue(corePage.buyersListInFooter.isDisplayed(), "Блок покупателям не отображается");
+        Assertions.assertTrue(corePage.sellersAndPartnersInFooter.isDisplayed(), "Блок покупателям и партнерам не отображается");
+        Assertions.assertTrue(corePage.ourProjectsInFooter.isDisplayed(), "Блок наши проекты не отображается");
+        Assertions.assertTrue(corePage.companyInFooter.isDisplayed(), "Блок компания не отображается");
+        Assertions.assertTrue(corePage.downloadsInFooter.isDisplayed(), "Блок приложения не отображается");
+        Assertions.assertTrue(corePage.avroraIconInFooter.isDisplayed(), "Ссылка на ОС Аврора в футере не отображается");
+        Assertions.assertTrue(corePage.avroraIconInFooter.isEnabled(), "С ссылкой на ОС Аврора в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.avroraIconInFooter), "Ссылка на ОС Аврора в футоре не кликабельная");
+        Assertions.assertTrue(corePage.vkIconInFooter.isDisplayed(), "Иконка ВК в футере не отображается");
+        Assertions.assertTrue(corePage.vkIconInFooter.isEnabled(), "С иконкой ВК в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.vkIconInFooter), "Иконка ВК в футоре не кликабельная");
+        Assertions.assertTrue(corePage.okIconInFooter.isDisplayed(), "Иконка OK в футере не отображается");
+        Assertions.assertTrue(corePage.okIconInFooter.isEnabled(), "С иконкой OК в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.okIconInFooter), "Иконка OК в футоре не кликабельная");
+        Assertions.assertTrue(corePage.tgIconInFooter.isDisplayed(), "Иконка TG в футере не отображается");
+        Assertions.assertTrue(corePage.tgIconInFooter.isEnabled(), "С иконкой TG в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.tgIconInFooter), "Иконка TG в футоре не кликабельная");
+        Assertions.assertTrue(corePage.recTechLinkInFooter.isDisplayed(), "Рекомендательные технологии в футере не отображается");
+        Assertions.assertTrue(corePage.recTechLinkInFooter.isEnabled(), "С Рекомендательными технологиями в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.recTechLinkInFooter), "Рекомендательные технологии в футоре не кликабельные");
 
     }
 }
