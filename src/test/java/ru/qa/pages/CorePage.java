@@ -14,6 +14,7 @@ public class CorePage extends BasePage {
 
     // не лучший мой вариант использования локаторов,
     // так как на странице /lk их будет по 2,
+    // но для проверок на странице /basket - Более чем достаточно
     // в будущем попробую порефакторить или заменить на xpath
     @Getter
     @FindBy(css = "[data-testid=\"login\"]")
@@ -67,7 +68,7 @@ public class CorePage extends BasePage {
     @FindBy(css = "[data-testid=\"map-search-input\"]")
     public WebElement mapSearchInput;
 
-    // тут мы ассертим только текст, поэтому span,
+    // тут мы используем этот локатор для ассерта только текста, поэтому span,
     // если нужна кнопка, то можно юзануть дополнительно input[data-testid='delivery-way-map-self']
     // ну или уйти в xpath
     @Getter

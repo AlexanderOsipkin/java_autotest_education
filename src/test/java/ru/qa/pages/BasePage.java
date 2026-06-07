@@ -45,7 +45,7 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    //Хелпер для проверки что элемент кликабельный но без клика на него
+    //Хелпер для проверки, что элемент кликабельный, но без клика на него
     public boolean isElementClickable(WebElement element) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));

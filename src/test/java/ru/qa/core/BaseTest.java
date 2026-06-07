@@ -20,12 +20,11 @@ public class BaseTest {
     protected CorePage corePage;
 
 
-    // Переделал на Each потому что - каждый тест получает чистый браузер
-    // тесты независимы, меньше нестабильног оповедения при параллельных запусках
+    // Переделал на Each потому что таким образом каждый тест получает чистый браузер
+    // тесты независимы, меньше нестабильного поведения при параллельных запусках
     @BeforeEach
     public void initContext() {
         try {
-            //System.setProperty("webdriver.chrome.driver", "/Users/user/Downloads/chromedriver-win64/chromedriver.exe");
             // Настройка опций для подключения к существующему браузеру
             ChromeOptions options = new ChromeOptions();
 
@@ -35,14 +34,13 @@ public class BaseTest {
             // отключает уведомления в хром
             options.addArguments("--disable-notifications");
 
-            //options.setExperimentalOption("debuggerAddress", "localhost:9222");//http://localhost:9222/json/version
             // Инициализация драйвера
             driver = new ChromeDriver(options);
 
             //Ожидаем элементы сайта 10 секунд
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-            //Добавим классы описанием страниц для инициализации
+            //Добавим классы с описанием страниц для инициализации
             basePage = new BasePage(driver);
             corePage = new CorePage(driver);
 
