@@ -352,7 +352,11 @@ public class CoreTest extends BaseTest {
         // Проверки после клика на кнопку
         Assertions.assertTrue(corePage.questionsContainer.isDisplayed(), "Блок вопросов на странице не отображается");
         Assertions.assertEquals("Частые вопросы", corePage.siteBasketButton.getText(), "Некорректный текст на странице вопросов и ответов");
+    }
 
+    @Test
+    void testB2BInFooter(){
+        corePage.open(BaseUrl + "lk/basket");
 
     }
 }
