@@ -265,5 +265,13 @@ public class CorePage extends BasePage {
     @FindBy(css = ".service-page-iframe .page-personal")
     public WebElement questionsContainer;
 
+    @Getter
+    @FindBy(css = "[data-wba-footer-name=\"B2B\"]")
+    public WebElement b2bInFooter;
+
+    @Getter
+    @FindBy(css = "[id=\"promoInput\"]")
+    public WebElement b2bCompanyInput;
+
 
 }

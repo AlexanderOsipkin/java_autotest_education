@@ -130,6 +130,7 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.isElementClickable(corePage.selectedCurrencyButton), "Кнопка валюты в шапке не кликабельна");
     }
 
+    // НАДЛО ОБНОВИТЬ, ДОБАВИЛИСЬ НОВЫЕ ДАЙМОНДЫ
     // Позже подумаю над тем, что бы вынести все повторяющиеся элементы в отдельный хелпер,
     // что бы читать стало удобней, пока оставлю так
     // Знаю, что тест нагружен и по-хорошему надо каждую проверку вынести отдельным тестом,
@@ -351,13 +352,25 @@ public class CoreTest extends BaseTest {
 
         // Проверки после клика на кнопку
         Assertions.assertTrue(corePage.questionsContainer.isDisplayed(), "Блок вопросов на странице не отображается");
-        Assertions.assertEquals("Частые вопросы", corePage.siteBasketButton.getText(), "Некорректный текст на странице вопросов и ответов");
+        Assertions.assertEquals("Частые вопросы", corePage.questionsContainer.getText(), "Некорректный текст на странице вопросов и ответов");
     }
 
     @Test
     void testB2BInFooter(){
         corePage.open(BaseUrl + "lk/basket");
 
+        // Проверки до клика на кнопку
+        Assertions.assertTrue(corePage.b2bInFooter.isDisplayed(), "Блок b2b в футере не отображается");
+        Assertions.assertTrue(corePage.b2bInFooter.isEnabled(), "С блоком b2b в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.b2bInFooter), "Блок b2b в футоре не кликабельный");
+
+        corePage.click(corePage.b2bInFooter);
+        wait.until(ExpectedConditions.urlContains("/promo/b2b"));
+        Assertions.assertEquals(BaseUrl + "/promo/b2b", driver.getCurrentUrl(), "Открылась некорректная страница b2b");
+
+        // Проверки после клика на кнопку
+        Assertions.assertTrue(corePage.b2bCompanyInput.isDisplayed(), "Поле ввода ИНН организации не отображается");
+        Assertions.assertEquals("Введите ИНН организации или ИП", corePage.b2bCompanyInput.getText(), "Некорректный текст в поле ввода ИНН организации");
     }
 }
 
