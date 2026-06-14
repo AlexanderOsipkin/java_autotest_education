@@ -257,4 +257,13 @@ public class CorePage extends BasePage {
     @FindBy(css = ".footer__link")
     public WebElement recTechLinkInFooter;
 
+    @Getter
+    @FindBy(css = "[data-wba-footer-name=\"Questions\"]")
+    public WebElement questionsInFooter;
+
+    @Getter
+    @FindBy(css = ".service-page-iframe .page-personal")
+    public WebElement questionsContainer;
+
+
 }

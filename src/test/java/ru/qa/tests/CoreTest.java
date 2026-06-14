@@ -335,6 +335,26 @@ public class CoreTest extends BaseTest {
         Assertions.assertTrue(corePage.isElementClickable(corePage.recTechLinkInFooter), "Рекомендательные технологии в футоре не кликабельные");
 
     }
+
+    @Test
+    void testQuestionsInFooter(){
+        corePage.open(BaseUrl + "lk/basket");
+
+        // Проверки до клика на кнопку
+        Assertions.assertTrue(corePage.questionsInFooter.isDisplayed(), "Блок вопросов в футере не отображается");
+        Assertions.assertTrue(corePage.questionsInFooter.isEnabled(), "С блоком вопросов в футоре запрещено взаимодействовать");
+        Assertions.assertTrue(corePage.isElementClickable(corePage.questionsInFooter), "Блок вопросов в футоре не кликабельный");
+
+        corePage.click(corePage.questionsInFooter);
+        wait.until(ExpectedConditions.urlContains("/services/voprosy-i-otvety"));
+        Assertions.assertEquals(BaseUrl + "services/voprosy-i-otvety", driver.getCurrentUrl(), "Открылась некорректная страница Вопросов и ответов");
+
+        // Проверки после клика на кнопку
+        Assertions.assertTrue(corePage.questionsContainer.isDisplayed(), "Блок вопросов на странице не отображается");
+        Assertions.assertEquals("Частые вопросы", corePage.siteBasketButton.getText(), "Некорректный текст на странице вопросов и ответов");
+
+
+    }
 }
 
 
